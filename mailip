@@ -1,0 +1,30 @@
+#!/bin/bash
+#Script to report public IP address change
+#Path to mail addr
+TO="~/mailipaddr"
+#The file that contains the current pubic IP
+EXT_IP_FILE="~/ip"
+#hostname
+HOST_NAME=$(hostname)
+#Check file for previous IP address
+if [ -f $EXT_IP_FILE ]; then
+KNOWN_IP=$(cat $EXT_IP_FILE)
+else
+KNOWN_IP=
+fi
+if [ "$1" = "-r" ]; then
+MSG="$(date)\n$KNOWN_IP"
+echo -e $MSG | mail -s "${HOST_NAME} reboot" $(cat $TO)
+else
+CURRENT_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
+MSG="$(date)\n$CURRENT_IP"
+#See if the IP has changed
+if [ "$CURRENT_IP" != "$KNOWN_IP" ]; then
+echo $CURRENT_IP > $EXT_IP_FILE
+#If so send an alert
+echo -e $MSG | mail -s "${HOST_NAME} ipchange" $(cat $TO)
+logger -t ipcheck -- IP changed to $CURRENT_IP
+else
+logger -t ipcheck -- NO IP change
+fi
+fi
