@@ -1,9 +1,9 @@
 #!/bin/bash
 #Script to report public IP address change
 #Path to mail addr
-TO=~pi/mailipaddr
+TO=~ip/mailipaddr
 #The file that contains the current pubic IP
-EXT_IP_FILE=~pi/ip
+EXT_IP_FILE=~ip/ip
 #hostname
 HOST_NAME=$(hostname)
 #Check file for previous IP address
