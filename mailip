@@ -1,9 +1,9 @@
 #!/bin/bash
 #Script to report public IP address change
 #Path to mail addr
-TO=~ip/mailipaddr
+TO=/home/pi/bin/raspberry_tools/mailipaddr
 #The file that contains the current pubic IP
-EXT_IP_FILE=~ip/ip
+EXT_IP_FILE=/home/pi/bin/raspberry_tools/ip
 #hostname
 HOST_NAME=$(hostname)
 #Check file for previous IP address
