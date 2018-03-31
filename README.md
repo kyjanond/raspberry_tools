@@ -19,7 +19,7 @@ sudo chmod 400 /etc/postfix/sasl_passwd
 sudo postmap /etc/postfix/sasl_passwd
 
 cat /etc/ssl/certs/thawte_Primary_Root_CA.pem | sudo tee -a /etc/postfix/cacert.pem
-# or
+#or
 cat ./raspberry_tools/Thawte_Premium_Server_CA.pem | sudo tee -a /etc/postfix/cacert.pem
 
 sudo /etc/init.d/postfix reload
