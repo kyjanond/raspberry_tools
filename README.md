@@ -1,5 +1,7 @@
 # raspberry_tools
 
+# mailip install
+
 sudo apt-get install dnsutils curl postfix mailutils libsasl2-2 ca-certificates libsasl2-modules
 
 sudo vim /etc/postfix/main.cf
@@ -19,7 +21,7 @@ sudo chmod 400 /etc/postfix/sasl_passwd
 sudo postmap /etc/postfix/sasl_passwd
 
 cat /etc/ssl/certs/thawte_Primary_Root_CA.pem | sudo tee -a /etc/postfix/cacert.pem
-#or
+OR
 cat ./raspberry_tools/Thawte_Premium_Server_CA.pem | sudo tee -a /etc/postfix/cacert.pem
 
 sudo /etc/init.d/postfix reload
