@@ -16,8 +16,8 @@ if [ "$1" = "-r" ]; then
 MSG="$(date)\n$KNOWN_IP"
 echo -e $MSG | mail -s "${HOST_NAME} reboot" $(cat $TO)
 else
-CURRENT_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
-MSG="$(date)\n$CURRENT_IP"
+CURRENT_IP=$(curl ipinfo.io/ip)
+MSG="$(date) | $(hostname) | $(cat /proc/device-tree/model)\n$CURRENT_IP"
 #See if the IP has changed
 if [ "$CURRENT_IP" != "$KNOWN_IP" ]; then
 echo $CURRENT_IP > $EXT_IP_FILE
