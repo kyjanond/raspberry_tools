@@ -27,3 +27,6 @@ cat ./raspberry_tools/Thawte_Premium_Server_CA.pem | sudo tee -a /etc/postfix/ca
 sudo /etc/init.d/postfix reload
 
 echo "Test mail from postfix" | mail -s "Test Postfix" you@example.com
+
+@reboot /home/pi/bin/raspberry_tools/mailip
+0 * * * * /home/pi/bin/raspberry_tools/mailip
